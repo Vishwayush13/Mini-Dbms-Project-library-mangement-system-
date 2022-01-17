@@ -15,7 +15,7 @@ namespace Library_Management_System
     public partial class Books_Usercontrol : UserControl
     {
 
-        SqlConnection con = new SqlConnection("Data Source=LAPTOP-636UV7BI\\SQLEXPRESS;Initial Catalog=libdb;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=Laptop\\SQLEXPRESS;Initial Catalog=libdb;Integrated Security=True");
 
         private static Books_Usercontrol _instance;
         public static Books_Usercontrol Instance
