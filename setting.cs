@@ -24,7 +24,7 @@ namespace Library_Management_System
 
             }
         }
-        SqlConnection con = new SqlConnection("Data Source=LAPTOP-636UV7BI\\SQLEXPRESS;Initial Catalog=libdb;Integrated Security=True");
+        SqlConnection con = new SqlConnection("Data Source=Laptop\\SQLEXPRESS;Initial Catalog=libdb;Integrated Security=True");
         public settings_usercontrol()
         {
             InitializeComponent();
