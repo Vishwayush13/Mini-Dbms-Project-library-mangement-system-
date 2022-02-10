@@ -36,10 +36,7 @@ namespace Library_Management_System
         SqlConnection con = new SqlConnection("Data Source=Laptop\\SQLEXPRESS;Initial Catalog=libdb;Integrated Security=True");
         SqlCommand cmd;
         SqlDataReader dr;
-
-
-        private string getusername()
-        {
+        private string getusername(){
             con.Open();
             String synatx = "SELECT value FROM sysTable where Property='Username'";
             cmd = new SqlCommand(synatx, con);
@@ -48,10 +45,8 @@ namespace Library_Management_System
             string temp = dr[0].ToString();
             con.Close();
             return temp;
-
-        }
-        private string getPassword()
-        {
+            }
+        private string getPassword(){
             con.Open();
             String synatx = "SELECT value FROM sysTable where Property='Password'";
             cmd = new SqlCommand(synatx, con);
@@ -59,28 +54,19 @@ namespace Library_Management_System
             dr.Read();
             string temp = dr[0].ToString();
             con.Close();
-            return temp;
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
+            return temp;}
+            private void label3_Click(object sender, EventArgs e){
             String uname = getusername(), upass = getPassword(), name, pass;
             name = textBox1.Text;
             pass = textBox2.Text;
-            if(name.Equals(uname) && pass.Equals(upass))
-            {
+            if(name.Equals(uname) && pass.Equals(upass)){
                 label5.Hide();
-                //MessageBox.Show("LOG-IN Success");
-
                 AppBody obj = new AppBody();
                 this.Hide();
-                obj.Show();
-            }
-            else
-            {
-                label5.Show();
-            }
+                obj.Show();}
+           else{
+           label5.Show();
+           }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
