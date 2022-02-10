@@ -151,74 +151,50 @@ namespace Library_Management_System
 
        
 
-        private void returnButton_Click(object sender, EventArgs e)
-        {
+        private void returnButton_Click(object sender, EventArgs e){
             search_buttonbook.PerformClick();
             searchbuttonborrow.PerformClick();
-
-          
             // see if borrower has already taken  that book 
             searchbuttonborrow.PerformClick();
-            if (bookIdtextbox.Text!=book1 && bookIdtextbox.Text!=book2)
-            {
-                
-                MessageBox.Show("The inputed borrower has not borrowed the book inputed");
-                return;
-            }
-            // now proceed with retunr logic
-            
-            try
-            {
-                if (book1 == bookIdtextbox.Text)
-                {
-                    // book1 must be updated in book1 slot
-                    cmd = new SqlCommand("Trans_update_book1_SP", con);
-
-                }
-                else
-                {
+            if (bookIdtextbox.Text!=book1 && bookIdtextbox.Text!=book2){
+                 MessageBox.Show("The inputed borrower has not borrowed the book inputed");
+                return;}
+            // now proceed with return logic
+            try{
+                if (book1 == bookIdtextbox.Text){
+                // book1 must be updated in book1 slot
+                   cmd = new SqlCommand("Trans_update_book1_SP", con);}
+                else{
                     cmd = new SqlCommand("Trans_update_book2_SP", con);
                 }
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@book_id",(object)DBNull.Value);
                 cmd.Parameters.AddWithValue("@br_id", borrowertextbox.Text);
                 con.Open();
-                try
-                {
+                try{
                     cmd.ExecuteNonQuery();
                 }
-                catch (Exception ex)
-                {
+                catch (Exception ex){
                     MessageBox.Show(">>> INVALID QUERY \n" + ex);
                 }
                 con.Close();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(" " + ex);
-            }
+            catch (Exception ex){
+                MessageBox.Show(" " + ex);}
             // now we will also update the brower's id in book table
             cmd = new SqlCommand("Trans_update_borrower_SP", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@book_id", bookIdtextbox.Text);
             cmd.Parameters.AddWithValue("@br_id", (object)DBNull.Value);
             con.Open();
-            try
-            {
-                cmd.ExecuteNonQuery();
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(" >> INVALID QUERY " + ex);
-            }
+            try{
+                cmd.ExecuteNonQuery();}
+            catch(Exception ex){
+                MessageBox.Show(" >> INVALID QUERY " + ex);}
             con.Close();
-
             search_buttonbook.PerformClick();
             searchbuttonborrow.PerformClick();
             MessageBox.Show("RETURNED  SUCCESSFULLY !!!");
-
-
-
         }
     }
 }
