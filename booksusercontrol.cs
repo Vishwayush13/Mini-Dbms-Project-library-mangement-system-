@@ -103,8 +103,7 @@ namespace Library_Management_System
             
         }
 
-        private void Addnew_Click(object sender, EventArgs e)
-        {
+        private void Addnew_Click(object sender, EventArgs e){
             SqlCommand cmd = new SqlCommand("BooksAdd_SP", con);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@book_id", bookIDtextBox2.Text);
@@ -124,8 +123,7 @@ namespace Library_Management_System
             }
             con.Close();
             refresh_DatagridView();
-
-        }
+            }
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
