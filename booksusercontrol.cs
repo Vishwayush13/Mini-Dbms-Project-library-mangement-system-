@@ -127,9 +127,8 @@ namespace Library_Management_System
 
         private void SearchButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                SqlCommand cmd = new SqlCommand("SearchBooks_SP", con);
+            try{
+                 SqlCommand cmd = new SqlCommand("SearchBooks_SP", con);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@book_id",bookidtextBox1.Text);
                 SqlDataAdapter DA = new SqlDataAdapter(cmd);
@@ -153,13 +152,11 @@ namespace Library_Management_System
                 this.dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 this.dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
                 this.dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-
-            }
-            catch (Exception ex)
-            {
+                }
+            catch (Exception ex){
                 MessageBox.Show(" " + ex);
-            }
-        }
+                }
+             }
 
         private void clearbutton_Click(object sender, EventArgs e)
         {
